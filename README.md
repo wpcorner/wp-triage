@@ -2,6 +2,15 @@
 
 The [WP Triage](https://wordpress.org/plugins/wp-triage/) plugin gives you the ability to create tickets within WordPress to keep a record of bug reports, feature requests and support queries from people authorised to contribute in the WP Triage system. It is designed to not be overly complicated and keep the focus on collaborative resolutions.
 
+The current features include but are not limited to:
+
+* Create projects, tickets, components and notes
+* Customise ticket details and assign them to users
+* Discuss tickets in the form of short notes (comments)
+* Sends emails to people when a ticket is being worked on
+* Filter projects and tickets based on their attributes
+* Configure how the trackers work with the roles manager
+
 ## About
 
 A free and open-source plugin made for the popular publishing platform, WordPress. It requires at least version 4.0 or later with the latest version of PHP possible.
