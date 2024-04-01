@@ -157,7 +157,7 @@ if ( get_option('dtjwpt_admin_toolbar_link') == "on" ) {
 				// Setup the link to be added to the toolbar
 				$dtjwpt_triage_link = array(
 					'id'	=> 'dtjwpt_triage_link',
-					'title'	=> __('Triage', 'wp-triage'),
+					'title'	=> __('WP Triage', 'wp-triage'),
 					'href'	=> admin_url('admin.php?page=dtjwpt_triage'),
 					'meta'	=> array(
 						'class'	=> 'dtjwpt_triage_link'
