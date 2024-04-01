@@ -8,7 +8,7 @@ A free and open-source plugin made for the popular publishing platform, WordPres
 
 ## Donate
 
-If you'd like to help support the development of this plugin, you can also [donate via PayPal](https://wptriage.cloud/donate). Any amount helps a great deal, thank you!
+If you'd like to help support the development of this plugin, you can also [donate](https://wptriage.cloud/donate). Any amount helps a great deal, thank you!
 
 ### Get Involved
 
