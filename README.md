@@ -28,6 +28,12 @@ If you'd like to help support the development of this plugin, you can also [dona
 
 To get involved, you can either help by [translating the plugin](https://translate.wordpress.org/projects/wp-plugins/wp-triage) into your language or report bugs and feedback in the issue tracker on the [GitHub repository](https://github.com/wpcorner/wp-triage).
 
+## Contributors
+
+- [Patrick Lumumba](https://github.com/lumumbapl)
+
+Contributions are welcomed. [Please review the guidelines for contributing to WP Triage](https://github.com/wpcorner/wp-triage/blob/main/CONTRIBUTING.md) before submitting a pull request on GitHub.
+
 ## Support
 
 For support, please visit the official [WordPress support](https://wordpress.org/support/) forums where all support-related requests will be dealt with when and where possible to do so.
