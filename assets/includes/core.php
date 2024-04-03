@@ -178,16 +178,6 @@ if ( get_option('dtjwpt_admin_toolbar_link') == "on" ) {
 					)
 				);
 
-				$dtjwpt_components_link = array(
-					'id'		=> 'dtjwpt_components_link',
-					'title'		=> __('Components', 'wp-triage'),
-					'parent'	=> 'dtjwpt_triage_link',
-					'href'		=> admin_url('admin.php?page=dtjwpt_components'),
-					'meta'		=> array(
-						'class'	=> 'dtjwpt_components_link'
-					)
-				);
-
 				$dtjwpt_roles_link = array(
 					'id'		=> 'dtjwpt_roles_link',
 					'title'		=> __('Roles', 'wp-triage'),
@@ -246,12 +236,12 @@ function dtjwpt_admin_pages() {
 
 	// Setup the parent menu page
 	add_menu_page(
-		__('Triage', 'wp-triage'),
-		__('Triage', 'wp-triage'),
+		__('WP Triage', 'wp-triage'),
+		__('WP Triage', 'wp-triage'),
 		DTJWPT_CAP_MANAGE_TICKETS,
 		'dtjwpt_triage',
 		false,
-		'dashicons-sos',
+		'dashicons-paperclip',
 		2700
 	);
 
@@ -263,16 +253,6 @@ function dtjwpt_admin_pages() {
 		'manage_options',
 		'dtjwpt_triage',
 		'dtjwpt_triage_template'
-	);
-
-	// Add the components link
-	add_submenu_page(
-		'dtjwpt_triage',
-		__('Components', 'wp-triage'),
-		__('Components', 'wp-triage'),
-		DTJWPT_CAP_MANAGE_COMPONENTS,
-		'dtjwpt_components',
-		'dtjwpt_components_template'
 	);
 
 	// Add the roles link
@@ -641,76 +621,6 @@ function dtjwpt_get_project($dtjwpt_project_id = 0) {
 }
 
 /**
- * Function that returns component data.
- * Returns all components if the id is 0 or blank.
- * 
- * @since 1.2
- * @return object Returns an object of data for a component.
- */
-function dtjwpt_get_component($dtjwpt_component_id = 0) {
-
-	global $wpdb;
-
-	// Get the component id and make sure it's valid
-	if ( $dtjwpt_component_id == 0 || $dtjwpt_component_id == '' || $dtjwpt_component_id == NULL ) {
-
-		// Count how many components we have
-		$dtjwpt_get_component = $wpdb->get_var(
-			'SELECT COUNT(*) FROM ' . $wpdb->prefix . DTJWPT_DB_COMPONENTS
-		);
-
-		// Check that we have at least one component to return
-		if ( $dtjwpt_get_component >= 1 ) {
-
-			// Get all of the components we have stored
-			$dtjwpt_component_data = $wpdb->get_results(
-				'SELECT * FROM ' . $wpdb->prefix . DTJWPT_DB_COMPONENTS
-			);
-
-		} else {
-
-			// We have no components, return an empty array
-			$dtjwpt_component_data = array();
-
-		}
-
-	} else {
-
-		// Make sure the component exists in the database
-		$dtjwpt_get_component = $wpdb->get_var(
-			$wpdb->prepare(
-				'SELECT COUNT(*) FROM ' . $wpdb->prefix . DTJWPT_DB_COMPONENTS . ' WHERE component_id = %s', $dtjwpt_component_id
-			)
-		);
-
-		// Check that it returned just the one row (it exists)
-		if ( $dtjwpt_get_component == 1 ) {
-
-			// Get the component data from the database
-			$dtjwpt_the_component = $wpdb->get_results(
-				$wpdb->prepare(
-					'SELECT * FROM ' . $wpdb->prefix . DTJWPT_DB_COMPONENTS . ' WHERE component_id = %s', $dtjwpt_component_id
-				)
-			);
-
-			// Get the component data and pass it into our result variable
-			$dtjwpt_component_data = $dtjwpt_the_component[0];
-
-		} else {
-
-			// Doesn't exist, return false
-			$dtjwpt_component_data = false;
-
-		}
-
-	}
-
-	// Return the component data
-	return $dtjwpt_component_data;
-
-}
-
-/**
  * Function that returns ticket data.
  * Returns all tickets if the id is 0 or blank.
  * 
@@ -971,51 +881,6 @@ function dtjwpt_can_modify_project($dtjwpt_project_id = 0) {
 
 }
 
-/**
- * Function that checks if a user can manage components.
- * 
- * @since 1.2
- * @return boolean Returns either true or false based on capabilities.
- */
-function dtjwpt_can_manage_components() {
-
-	// Simple check against the user role permissions
-	if ( current_user_can(DTJWPT_CAP_MANAGE_COMPONENTS) ) {
-
-		// The user can manage components
-		return true;
-
-	} else {
-
-		// The user can't manage components
-		return false;
-
-	}
-
-}
-
-/**
- * Function that checks if a user can manage tickets.
- * 
- * @since 1.0
- * @return boolean Returns either true or false based on capabilities.
- */
-function dtjwpt_can_manage_tickets() {
-
-	// Simple check against the user role permissions
-	if ( current_user_can(DTJWPT_CAP_MANAGE_TICKETS) ) {
-
-		// The user can manage tickets
-		return true;
-
-	} else {
-
-		// The user can't manage tickets
-		return false;
-
-	}
-
-}
 
 /**
  * Function that checks if a user can manage a particular ticket.
@@ -1131,4 +996,3 @@ function dtjwpt_can_modify_note($note_id = 0) {
 	}
 
 }
-
